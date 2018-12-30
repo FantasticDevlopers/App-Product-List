@@ -42,8 +42,8 @@
         <div class="panel panel-primary">
 
           <div class="panel-body">
-            <h5>Nhap Ma Giam Gia<br>
-              <small>Neu nhieu phan chia boi dau phay</small>
+            <h5>Nhập mã giảm giá<br>
+              <small>Nếu nhiều phân chia bởi dấu phẩy</small>
             </h5>
 
             <div>
@@ -53,7 +53,7 @@
                 <input type="hidden" name="order_id" value="{{ order.id }}">
                 <br>
                 <span>
-                  <input type="submit" class="btn btn-warning pull-right" value="Chap Nhan Ma">
+                  <input type="submit" class="btn btn-warning pull-right" value="Xác nhận mã">
                 </span>
               </form>
             </div>
@@ -67,16 +67,16 @@
             {% for item in order.get_cart_items %}
               <tr>
                 <td>{{ item }}</td>
-                <td>${{ item.product.price }}</td>
+                <td>{{ item.product.price }} VND</td>
               </tr>
             {% endfor %}
           </td>
           <tr>
-            <td><strong>Tong So Don Hang</strong></td>
-            <td><strong>${{ order.get_cart_total }}</strong></td>
+            <td><strong>Tổng thanh toán</strong></td>
+            <td><strong>{{ order.get_cart_total }} VND</strong></td>
           </tr>
         </table>
-        <button onclick="toggleDisplay();" class="btn btn-warning" style="width: 100%;">Tra Bang The Tin dung
+        <button onclick="toggleDisplay();" class="btn btn-warning" style="width: 100%;">Trả bằng thẻ tín dụng
         </button>
       </div>
     </div>
@@ -90,7 +90,7 @@
     <!-- <script src="{% static 'js/stripeV3.js' %}"></script> -->
   </div>
 
-  <div id="stripe-token-handler" class="is-hidden">Thanh cong! Da nhan ma: <span class="token"></span></div>
+  <div id="stripe-token-handler" class="is-hidden">Thành công! Đã nhận mã: <span class="token"></span></div>
 
 </div>
 
@@ -98,7 +98,7 @@
 
 <script type="text/javascript">
   function toggleDisplay() {
-    alert('Tra phi thanh cong');
+    alert('Trả phí thành công');
   };
 </script>
 

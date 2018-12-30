@@ -6,9 +6,9 @@
    <div class="row">
     <table class="table table-hover table-bordered text-center">
       <tr class="text-center">
-        <th>no.</th>
-        <th>Item</th>
-        <th>Price</th>
+        <th>Số thứ tự</th>
+        <th>Sản phẩm</th>
+        <th>Giá</th>
       </tr>
       {% for item in order.get_cart_items %}
         <tr>
@@ -25,13 +25,13 @@
         </tr>
       {% empty %}
         <tr>
-          <td colspan= 3> You have not added any items yet.</td>
+          <td colspan= 3> Bạn chưa thêm bất kỳ sản phẩm nào.</td>
         </tr>
       {% endfor %}
       <tr>
         {% if order.get_cart_total != None %}
         <td colspan=2>
-          <strong class="pull-right">Order Total:</strong>
+          <strong class="pull-right">Tổng đơn hàng:</strong>
         </td>
         
         <td colspan= 1>
@@ -42,12 +42,12 @@
       <tr>
         <td colspan=1 >
           <a href="{% url 'products:product-list' %}" class="btn btn-warning pull-left">
-            {% if order %}Continue Shopping{% else %}Add Items to Cart {% endif %}
+            {% if order %}Tiếp tục mua sắm {% else %}Thêm sản phẩm vào giỏ {% endif %}
           </a> 
         </td>
         <td colspan=2>
           {% if order.get_cart_items %}
-            <a href="{% url 'shopping_cart:checkout' %}" class="pull-right btn btn-primary">Proceed To Checkout</a>
+            <a href="{% url 'shopping_cart:checkout' %}" class="pull-right btn btn-primary">Tiến hành thanh toán</a>
           {% endif %}
         </td>
       </tr>
@@ -61,7 +61,7 @@
   {{ block.super }}
   <script>
   function confirm_delete(){
-    return confirm("Do you want to remove this item from cart?");
+    return confirm("Bạn có muốn bỏ sản phẩm này không ?");
   }
   </script>
 {% endblock scripts %}

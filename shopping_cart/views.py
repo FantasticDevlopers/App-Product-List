@@ -33,7 +33,7 @@ def add_to_cart(request, **kwargs):
     product = Product.objects.filter(id=kwargs.get('item_id', "")).first()
     # check if the user already owns this product
     if product in request.user.profile.ebooks.all():
-        messages.info(request, 'Ban da co phu kien nay')
+        messages.info(request, 'Bạn đã sở hửu sản phẩm này')
         return redirect(reverse('products:product-list'))
         # create orderItem of the selected product
     order_item, status = OrderItem.objects.get_or_create(product=product)
@@ -46,7 +46,7 @@ def add_to_cart(request, **kwargs):
         user_order.save()
 
     # show confirmation message and redirect back to the same page
-    messages.info(request, "Phu kien duoc them vao gio")
+    messages.info(request, "Đã thêm sản phẩm vào giỏ")
     return redirect(reverse('products:product-list'))
 
 
@@ -55,7 +55,7 @@ def delete_from_cart(request, item_id):
     item_to_delete = OrderItem.objects.filter(pk=item_id)
     if item_to_delete.exists():
         item_to_delete[0].delete()
-        messages.info(request, "Phu kien duoc bo")
+        messages.info(request, "Sản phẩm đã được bỏ")
     return redirect(reverse('shopping_cart:order_summary'))
 
 
